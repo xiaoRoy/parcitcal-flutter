@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/chap3/layouts.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(LayoutShowcase());
 }
 
 class MyApp extends StatelessWidget {
