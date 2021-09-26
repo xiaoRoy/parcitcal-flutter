@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/chap3/layouts.dart';
+import 'package:hello_world/prgramming_flutter/chap_1/ripple_button.dart';
+import 'package:hello_world/widget_of_the_week/showcase.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'An app that can count to:'),
+      // home: MyHomePage(title: 'An app that can count to:'),
+      home: WidgetOfTheWeekShowcase(),
     );
   }
 }
@@ -113,11 +115,18 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             TextButton(
-                onPressed: _resetCounter,
-                child: Text(
-                  'Reset Counter',
-                  style: Theme.of(context).textTheme.button,
-                ))
+              onPressed: _resetCounter,
+              child: Text('Reset Counter',
+                  style: Theme.of(context).textTheme.button),
+              style: TextButton.styleFrom(backgroundColor: Colors.red),
+            ),
+            SplashButton(
+              text: 'Make the counter ${_counter + 1}',
+              textColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
+              splashColor: Theme.of(context).primaryColorLight,
+              onPressed: _incrementCounter,
+            )
           ],
         ),
       ),
