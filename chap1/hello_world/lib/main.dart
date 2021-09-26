@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/chap3/layouts.dart';
+import 'package:hello_world/prgramming_flutter/chap_1/ripple_button.dart';
+import 'package:hello_world/widget_of_the_week/showcase.dart';
 
 void main() {
-  runApp(LayoutShowcase());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -21,9 +22,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      // home: MyHomePage(title: 'An app that can count to:'),
+      home: WidgetOfTheWeekShowcase(),
     );
   }
 }
@@ -49,6 +51,8 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  String _countMessage = '';
+
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -60,6 +64,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -68,11 +78,14 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    _countMessage = _counter == 0 ? 'None' : _counter.toString();
+    final title = '${widget.title} $_counter';
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+        title: Text(title),
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -98,9 +111,22 @@ class _MyHomePageState extends State<MyHomePage> {
               'You have pushed it this many times:',
             ),
             Text(
-              '$_counter',
+              _countMessage,
               style: Theme.of(context).textTheme.headline4,
             ),
+            TextButton(
+              onPressed: _resetCounter,
+              child: Text('Reset Counter',
+                  style: Theme.of(context).textTheme.button),
+              style: TextButton.styleFrom(backgroundColor: Colors.red),
+            ),
+            SplashButton(
+              text: 'Make the counter ${_counter + 1}',
+              textColor: Colors.white,
+              backgroundColor: Theme.of(context).primaryColor,
+              splashColor: Theme.of(context).primaryColorLight,
+              onPressed: _incrementCounter,
+            )
           ],
         ),
       ),
