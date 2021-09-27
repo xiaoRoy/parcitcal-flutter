@@ -7,7 +7,7 @@ class WidgetOfTheWeekShowcase extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('widget of the week')),
-      body: NormalContainer(),
+      body: ContainerColumn(),
     );
   }
 }
