@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/beginning/chap6/row_and_columm.dart';
 import 'package:hello_world/prgramming_flutter/chap_1/ripple_button.dart';
 import 'package:hello_world/prgramming_flutter/chap_2/chap_2.dart';
 import 'package:hello_world/widget_of_the_week/showcase.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       // home: MyHomePage(title: 'An app that can count to:'),
-      home: ProgrammingFlutterChap2(),
+      home: BeginningBook(),
     );
   }
 }
