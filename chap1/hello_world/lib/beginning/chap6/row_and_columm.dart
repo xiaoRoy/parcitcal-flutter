@@ -8,7 +8,7 @@ class BeginningBook extends StatelessWidget {
       appBar: AppBar(
         title: Text('Beginning'),
       ),
-      body: BlueBoxRow(5),
+      body: MainAxisRadioGroup(),
     );
   }
 }
@@ -36,7 +36,6 @@ List<BlueBox> generateBlueBox(int count, {double margin = 0.0}) {
 }
 
 class BlueBoxRow extends StatelessWidget {
-
   final int _count;
 
   BlueBoxRow(this._count);
@@ -45,6 +44,52 @@ class BlueBoxRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: generateBlueBox(_count, margin: 5.0),
+    );
+  }
+}
+
+class MainAxisRadioGroup extends StatefulWidget {
+  @override
+  State<MainAxisRadioGroup> createState() {
+    return _MainAxisRadioGroupState();
+  }
+}
+
+class _MainAxisRadioGroupState extends State<MainAxisRadioGroup> {
+  static const _mainAxisList = [
+    MainAxisAlignment.center,
+    MainAxisAlignment.end,
+    MainAxisAlignment.spaceAround,
+    MainAxisAlignment.spaceBetween,
+    MainAxisAlignment.spaceEvenly,
+    MainAxisAlignment.start,
+  ];
+
+  MainAxisAlignment? _currentGroupValue = _mainAxisList.first;
+
+  @override
+  Widget build(BuildContext context) {
+    final ValueChanged<MainAxisAlignment?> valueChanged =
+        (MainAxisAlignment? mainAxisAlignment) {
+      setState(() {
+        _currentGroupValue = mainAxisAlignment;
+      });
+    };
+
+    final mainAxisRadioItemList = _mainAxisList.map((mainAxisAligment) {
+      final mainAxisAligmentValue = mainAxisAligment.toString();
+      return ListTile(
+        title: Text(mainAxisAligmentValue),
+        leading: Radio<MainAxisAlignment>(
+          value: mainAxisAligment,
+          groupValue: _currentGroupValue,
+          onChanged: valueChanged,
+        ),
+      );
+    }).toList();
+
+    return Column(
+      children: mainAxisRadioItemList,
     );
   }
 }
