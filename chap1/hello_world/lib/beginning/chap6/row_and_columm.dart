@@ -43,7 +43,7 @@ class _MainAxisShowcaseState extends State<MainAxisShowcase> {
 
 class BlueBoxColumn extends StatelessWidget {
   final int _count;
-  final MainAxisAlignment _mainAxisAlignment;
+  MainAxisAlignment _mainAxisAlignment;
 
   BlueBoxColumn(this._count,
       {MainAxisAlignment mainAxisAlignment = MainAxisAlignment.start})
