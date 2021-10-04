@@ -9,7 +9,7 @@ class ApiDocumentation extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('API Documentation'),),
-      body: MainAxisSizeShowcase(),
+      body: FlexibleFitPropertyDemonstration(),
     );
   }
 }

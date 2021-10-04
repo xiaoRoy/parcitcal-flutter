@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: MyHomePage(title: 'An app that can count to:'),
       home: ApiDocumentation(),
+      // home: WidgetOfTheWeekShowcase(),
     );
   }
 }

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/commons/blue_box.dart';
 
+//main axis size
+
 class MainAxisSizeShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -45,5 +47,26 @@ class _BlueBoxColummWithBackgound extends StatelessWidget {
       ));
     }
     return blueBoxList;
+  }
+}
+
+class FlexibleFitPropertyDemonstration extends StatelessWidget {
+
+  Container _generateRowContainer(FlexFit flexFit) {
+    return Container(
+          margin: EdgeInsets.all(6.0),
+          child: Row(children: [
+            BlueBox(),
+            Flexible(child: BlueBox(), flex: 1, fit: flexFit),
+            Flexible(child: BlueBox(), flex: 1, fit: flexFit)
+          ]),
+        );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children:[_generateRowContainer(FlexFit.loose), _generateRowContainer(FlexFit.tight)],
+    );
   }
 }
