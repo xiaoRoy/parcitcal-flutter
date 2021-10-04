@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/widget_of_the_week/container_showcase.dart';
+import 'package:hello_world/widget_of_the_week/flexible_showcase.dart';
 
 class WidgetOfTheWeekShowcase extends StatelessWidget{
 
@@ -7,7 +8,7 @@ class WidgetOfTheWeekShowcase extends StatelessWidget{
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('widget of the week')),
-      body: ContainerColumn(),
+      body: FlexibleShowcase(),
     );
   }
 }
