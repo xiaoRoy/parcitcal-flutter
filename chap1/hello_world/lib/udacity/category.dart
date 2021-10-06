@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/udacity/unit_commans.dart';
 import 'package:hello_world/udacity/unit_coverter.dart';
 import 'unit.dart';
 
@@ -60,54 +61,10 @@ class Category extends StatelessWidget {
 }
 
 class UnitCategoryListScreen extends StatelessWidget {
-  static List<Unit> _retrieveUnitList(String categoryName) {
-    return List.generate(
-        10,
-        (index) => Unit(
-            name: '$categoryName Unit#$index', conversion: index.toDouble()));
-  }
-
-  static final _unitCategorySpecList = [
-    UnitCategorySpec('Length', Colors.teal, _retrieveUnitList('Length')),
-    UnitCategorySpec('Area', Colors.orange, _retrieveUnitList('Area')),
-    UnitCategorySpec('Volume', Colors.pinkAccent, _retrieveUnitList('Volume')),
-    UnitCategorySpec('Mass', Colors.blueAccent, _retrieveUnitList('Mass')),
-    UnitCategorySpec('Time', Colors.yellow, _retrieveUnitList('Time')),
-    UnitCategorySpec('Digital Storage', Colors.greenAccent, _retrieveUnitList('Digital Storage')),
-    UnitCategorySpec('Energy', Colors.purpleAccent, _retrieveUnitList('Energy')),
-    UnitCategorySpec('Currency', Colors.red, _retrieveUnitList('Currency')),
-  ];
-
+  
   @override
   Widget build(BuildContext context) {
-    return _buildUnitCoverterList();
-  }
-
-  Widget _buildUnitCoverterList() {
-    return Container(
-      color: Colors.green[100],
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-      child: ListView.builder(
-        itemBuilder: _buildUnitCoverterItem,
-        itemCount: _unitCategorySpecList.length,
-      ),
-    );
-  }
-
-  Widget _buildUnitCoverterItem(BuildContext context, int index) {
-    final unitCategorySpec = _unitCategorySpecList[index];
-    return Category(
-      text: unitCategorySpec.name,
-      color: unitCategorySpec.backgroundColor as ColorSwatch<dynamic>,
-      iconData: Icons.cake,
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => UnitCoverterScreen(
-            unitCategorySpec: unitCategorySpec,
-          ),
-        ));
-      },
-    );
+    return buildUnitCoverterList(unitCategorySpecList);
   }
 }
 
