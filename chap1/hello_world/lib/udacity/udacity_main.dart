@@ -10,7 +10,7 @@ class UnitCoverterApp extends StatelessWidget {
         elevation: 0.0,
         title: const Text('Unit Converter', style: TextStyle(fontSize: 30.0),),
       ),
-      body: UnitCategoryListScreen(),
+      body: MutableHelloRectangle(text: 'Random Color'),
     );
   }
 }
