@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hello_world/udacity/unit_coverter.dart';
+import 'unit.dart';
 
 class Category extends StatelessWidget {
   final Color _color;
   final String _text;
   final IconData _iconData;
+  final GestureTapCallback? _onTap;
 
   Category({
     required Color color,
     required String text,
     required IconData iconData,
+    GestureTapCallback? onTap,
   })  : _color = color,
         _text = text,
-        _iconData = iconData;
+        _iconData = iconData,
+        _onTap = onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +28,7 @@ class Category extends StatelessWidget {
           borderRadius: BorderRadius.circular(50.0),
           highlightColor: _color,
           splashColor: _color,
-          onTap: () {},
+          onTap: _onTap,
           child: _buildBaseCategory(context),
         ),
       ),
@@ -55,15 +60,22 @@ class Category extends StatelessWidget {
 }
 
 class UnitCategoryListScreen extends StatelessWidget {
-  static const _unitCategorySpecList = [
-    _UnitCategorySpec('Length', Colors.teal),
-    _UnitCategorySpec('Area', Colors.orange),
-    _UnitCategorySpec('Volume', Colors.pinkAccent),
-    _UnitCategorySpec('Mass', Colors.blueAccent),
-    _UnitCategorySpec('Time', Colors.yellow),
-    _UnitCategorySpec('Digital Storage', Colors.greenAccent),
-    _UnitCategorySpec('Energy', Colors.purpleAccent),
-    _UnitCategorySpec('Currency', Colors.red),
+  static List<Unit> _retrieveUnitList(String categoryName) {
+    return List.generate(
+        10,
+        (index) => Unit(
+            name: '$categoryName Unit#$index', conversion: index.toDouble()));
+  }
+
+  static final _unitCategorySpecList = [
+    UnitCategorySpec('Length', Colors.teal, _retrieveUnitList('Length')),
+    UnitCategorySpec('Area', Colors.orange, _retrieveUnitList('Area')),
+    UnitCategorySpec('Volume', Colors.pinkAccent, _retrieveUnitList('Volume')),
+    UnitCategorySpec('Mass', Colors.blueAccent, _retrieveUnitList('Mass')),
+    UnitCategorySpec('Time', Colors.yellow, _retrieveUnitList('Time')),
+    UnitCategorySpec('Digital Storage', Colors.greenAccent, _retrieveUnitList('Digital Storage')),
+    UnitCategorySpec('Energy', Colors.purpleAccent, _retrieveUnitList('Energy')),
+    UnitCategorySpec('Currency', Colors.red, _retrieveUnitList('Currency')),
   ];
 
   @override
@@ -86,15 +98,23 @@ class UnitCategoryListScreen extends StatelessWidget {
     final unitCategorySpec = _unitCategorySpecList[index];
     return Category(
       text: unitCategorySpec.name,
-      color: unitCategorySpec.splashColor as ColorSwatch<dynamic>,
+      color: unitCategorySpec.backgroundColor as ColorSwatch<dynamic>,
       iconData: Icons.cake,
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => UnitCoverterScreen(
+            unitCategorySpec: unitCategorySpec,
+          ),
+        ));
+      },
     );
   }
 }
 
-class _UnitCategorySpec {
+class UnitCategorySpec {
   final String name;
-  final Color splashColor;
+  final Color backgroundColor;
+  final List<Unit> unitList;
 
-  const _UnitCategorySpec(this.name, this.splashColor);
+  const UnitCategorySpec(this.name, this.backgroundColor, this.unitList);
 }
