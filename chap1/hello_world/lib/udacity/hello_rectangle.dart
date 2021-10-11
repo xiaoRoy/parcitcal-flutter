@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class HelloRectangle extends StatelessWidget {
   @override
@@ -43,12 +44,42 @@ class _MutableHelloRectangleState extends State<MutableHelloRectangle> {
         onPressed: () {
           setState(() {
             final random = Random(DateTime.now().millisecond);
-            final color = Color.fromARGB(255, random.nextInt(256), random.nextInt(256), random.nextInt(256));
+            final color = Color.fromARGB(255, random.nextInt(256),
+                random.nextInt(256), random.nextInt(256));
             _backgroundColor = color;
           });
         },
         child: Text(widget.text),
         style: TextButton.styleFrom(backgroundColor: _backgroundColor),
+      ),
+    );
+  }
+}
+
+class HelloSwtich extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final onChanged = (bool isChecked) {};
+    final switchWidget = (TargetPlatform.iOS == Theme.of(context).platform)
+        ? CupertinoSwitch(
+            value: true,
+            onChanged: onChanged,
+          )
+        : Switch(
+            value: true,
+            onChanged: onChanged,
+          );
+
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            'hello',
+            style: TextStyle(fontSize: 36.0),
+          ),
+          switchWidget,
+        ],
       ),
     );
   }
