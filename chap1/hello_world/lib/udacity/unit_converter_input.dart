@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/udacity/unit.dart';
 
-class UnitCoverterInput extends StatefulWidget {
+class UnitConverterInput extends StatefulWidget {
   final List<Unit> _unitList;
 
-  UnitCoverterInput(this._unitList);
+  UnitConverterInput(this._unitList);
 
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
-    throw UnimplementedError();
+    return _UnitConverterInputState();
   }
 }
 
-class _UnitCoverterInputState extends State<UnitCoverterInput> {
+class _UnitConverterInputState extends State<UnitConverterInput> {
   late Unit _selectedUnit;
 
   @override
@@ -27,7 +26,7 @@ class _UnitCoverterInputState extends State<UnitCoverterInput> {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
-        children: [],
+        children: [_buildInputTextField()],
       ),
     );
   }
@@ -42,10 +41,10 @@ class _UnitCoverterInputState extends State<UnitCoverterInput> {
 
   Widget _buildUnitDropdown() {
     final unitList = widget._unitList;
-    return DropdownButton(items: unitList.map(_buildUnitDropdwonItem).toList());
+    return DropdownButton(items: unitList.map(_buildUnitDropdownItem).toList());
   }
 
-  DropdownMenuItem<Unit> _buildUnitDropdwonItem(Unit unit) {
+  DropdownMenuItem<Unit> _buildUnitDropdownItem(Unit unit) {
     return DropdownMenuItem<Unit>(
       child: Text(unit.name ?? ''),
       value: unit,
