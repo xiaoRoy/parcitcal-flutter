@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hello_world/udacity/unit_commans.dart';
-import 'package:hello_world/udacity/unit_coverter.dart';
+import 'package:hello_world/udacity/unit_commons.dart';
+import 'package:hello_world/udacity/unit_converter.dart';
 import 'unit.dart';
 
 class Category extends StatelessWidget {
@@ -64,7 +64,7 @@ class UnitCategoryListScreen extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return buildUnitCoverterList(unitCategorySpecList);
+    return buildUnitConverterList(unitCategorySpecList);
   }
 }
 

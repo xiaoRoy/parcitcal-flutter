@@ -56,7 +56,7 @@ class _MutableHelloRectangleState extends State<MutableHelloRectangle> {
   }
 }
 
-class HelloSwtich extends StatelessWidget {
+class HelloSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final onChanged = (bool isChecked) {};

@@ -3,7 +3,7 @@ import 'package:hello_world/udacity/category.dart';
 import 'package:hello_world/udacity/hello_rectangle.dart';
 import 'package:hello_world/udacity/unit_category_list_mutatble.dart';
 
-class UnitCoverterApp extends StatelessWidget {
+class UnitConverterApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,8 +13,8 @@ class UnitCoverterApp extends StatelessWidget {
       ),
       // body: MutableHelloRectangle(text: 'Random Color'),
       // body: UnitCategoryListScreen(),
-      // body: MultableUnitCategoryListScreen(),
-      body: HelloSwtich(),
+      // body: MutableUnitCategoryListScreen(),
+      body: HelloSwitch(),
 
     );
   }

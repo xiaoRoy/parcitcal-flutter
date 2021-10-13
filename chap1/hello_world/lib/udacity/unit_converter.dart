@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/udacity/category.dart';
-import 'package:hello_world/udacity/unit_commans.dart';
+import 'package:hello_world/udacity/unit_commons.dart';
 
-class UnitCoverterScreen extends StatelessWidget {
+class UnitConverterScreen extends StatelessWidget {
   final UnitCategorySpec _unitCategorySpec;
 
-  UnitCoverterScreen({
+  UnitConverterScreen({
     required UnitCategorySpec unitCategorySpec,
   }) : _unitCategorySpec = unitCategorySpec;
 

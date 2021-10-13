@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hello_world/udacity/category.dart';
 import 'package:hello_world/udacity/unit.dart';
-import 'package:hello_world/udacity/unit_coverter.dart';
-import 'package:hello_world/udacity/unit_coverter_mutable.dart';
+import 'package:hello_world/udacity/unit_converter.dart';
+import 'package:hello_world/udacity/unit_converter_mutable.dart';
 
 List<Unit> _retrieveUnitList(String categoryName) {
   return List.generate(
@@ -25,19 +25,19 @@ final unitCategorySpecList = [
   UnitCategorySpec('Currency', Colors.red, _retrieveUnitList('Currency')),
 ];
 
-Widget buildUnitCoverterList(List<UnitCategorySpec> unitCategorySpecList) {
+Widget buildUnitConverterList(List<UnitCategorySpec> unitCategorySpecList) {
   return Container(
     color: Colors.green[100],
     padding: const EdgeInsets.symmetric(horizontal: 8.0),
     child: ListView.builder(
       itemBuilder: (context, index) =>
-          _buildUnitCoverterItem(context, unitCategorySpecList[index]),
+          _buildUnitConverterItem(context, unitCategorySpecList[index]),
       itemCount: unitCategorySpecList.length,
     ),
   );
 }
 
-Widget _buildUnitCoverterItem(
+Widget _buildUnitConverterItem(
   BuildContext context,
   UnitCategorySpec unitCategorySpec,
 ) {
@@ -47,7 +47,7 @@ Widget _buildUnitCoverterItem(
     iconData: Icons.cake,
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MultableUnitCoverter(
+        builder: (context) => MutableUnitConverter(
           unitCategorySpec: unitCategorySpec,
         ),
       ));
@@ -58,7 +58,7 @@ Widget _buildUnitCoverterItem(
 Widget buildUnitConverter(
     BuildContext context, UnitCategorySpec unitCategorySpec) {
   final unitWidgetList = unitCategorySpec.unitList.map((unit) {
-    final coversion = (unit.conversion?.toString()) ?? 'no conversion';
+    final conversion = (unit.conversion?.toString()) ?? 'no conversion';
     return Container(
       color: unitCategorySpec.backgroundColor,
       margin: const EdgeInsets.all(6.0),
@@ -70,7 +70,7 @@ Widget buildUnitConverter(
             style: Theme.of(context).textTheme.headline5,
           ),
           Text(
-            coversion,
+            conversion,
             style: Theme.of(context).textTheme.subtitle1,
           )
         ],

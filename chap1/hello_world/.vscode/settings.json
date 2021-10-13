@@ -1,4 +1,7 @@
 {
     "dart.flutterHotReloadOnSave": "never",
-    "dart.flutterHotRestartOnSave": false
+    "dart.flutterHotRestartOnSave": false,
+    "cSpell.enableFiletypes": [
+        "dart"
+    ]
 }
