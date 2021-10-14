@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hello_world/udacity/category.dart';
 import 'package:hello_world/udacity/unit.dart';
 import 'package:hello_world/udacity/unit_converter.dart';
+import 'package:hello_world/udacity/unit_converter_input_output.dart';
 import 'package:hello_world/udacity/unit_converter_mutable.dart';
 
 List<Unit> _retrieveUnitList(String categoryName) {
@@ -47,9 +48,8 @@ Widget _buildUnitConverterItem(
     iconData: Icons.cake,
     onTap: () {
       Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => MutableUnitConverter(
-          unitCategorySpec: unitCategorySpec,
-        ),
+        builder: (context) =>
+            UnitConverterInputAndOut(unitCategorySpec: unitCategorySpec),
       ));
     },
   );

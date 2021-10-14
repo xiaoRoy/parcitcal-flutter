@@ -26,7 +26,7 @@ class _UnitConverterInputState extends State<UnitConverterInput> {
     return Padding(
       padding: EdgeInsets.all(16.0),
       child: Column(
-        children: [_buildInputTextField()],
+        children: [_buildInputTextField(), _buildUnitDropdown()],
       ),
     );
   }
@@ -41,7 +41,19 @@ class _UnitConverterInputState extends State<UnitConverterInput> {
 
   Widget _buildUnitDropdown() {
     final unitList = widget._unitList;
-    return DropdownButton(items: unitList.map(_buildUnitDropdownItem).toList());
+    return DropdownButton<Unit>(
+      value: _selectedUnit,
+      items: unitList.map(_buildUnitDropdownItem).toList(),
+      icon: const Icon(Icons.arrow_downward),
+      iconSize: 24,
+      onChanged: (Unit? unit) {
+        if (unit != null) {
+          setState(() {
+            _selectedUnit = unit;
+          });
+        }
+      },
+    );
   }
 
   DropdownMenuItem<Unit> _buildUnitDropdownItem(Unit unit) {

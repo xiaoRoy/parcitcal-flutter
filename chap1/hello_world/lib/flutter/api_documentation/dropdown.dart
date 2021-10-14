@@ -45,10 +45,10 @@ class _DropdownDemonstrtionState extends State<DropdownDemonstrtion> {
     );
   }
 
-  DropdownMenuItem<String> _buildDropdownItem(String itme) {
+  DropdownMenuItem<String> _buildDropdownItem(String item) {
     return DropdownMenuItem<String>(
-      child: Text(itme),
-      value: itme,
+      child: Text(item),
+      value: item,
     );
   }
 }
