@@ -1,14 +1,52 @@
 import 'package:flutter/material.dart';
 
-abstract class Example extends StatelessWidget {
-  final String code;
+const red = Colors.red;
+const green = Colors.green;
+const blue = Colors.blue;
+const big = TextStyle(fontSize: 30);
 
-  final String explanation;
-  const Example({
-    Key? key,
-    required this.code,
-    required this.explanation,
-  }) : super(key: key);
+abstract class Example extends StatelessWidget {
+  String get code;
+
+  String get explanation;
+
+  const Example({Key? key}) : super(key: key);
+}
+
+class Example1 extends Example {
+  @override
+  final code = 'Container(color:red)';
+
+  @override
+  final explanation = 'The screen is the parent of the Container,'
+      'and it forces the Container to be exactly the same size as the screen.'
+      '\n\n'
+      'So the Container fills the screen and paints it red.';
+
+  const Example1({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(color: red);
+  }
+}
+
+class Example2 extends Example {
+  const Example2({Key? key}) : super(key: key);
+
+  @override
+  final code = 'Container(width: 100, height: 100, color: red)';
+
+  @override
+  final explanation = 'The red Container wants be 100 x 100. but it can\'t, '
+      'because the screen force it to be exactly the same size as the screen.'
+      '\n\n'
+      'So the Container fill the screen.';
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(width: 100, height: 100, color: red);
+  }
 }
 
 class ExampleSelectionButton extends StatelessWidget {
