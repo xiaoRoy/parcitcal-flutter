@@ -4,27 +4,36 @@ import 'package:flutter_layout/example/example.dart';
 class FlutterLayoutArticle extends StatefulWidget {
   final List<Example> examples;
 
-  FlutterLayoutArticle(
+  const FlutterLayoutArticle(
     this.examples, {
     Key? key,
   }) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    throw UnimplementedError();
-  }
+  State<StatefulWidget> createState() => _FlutterLayoutArticleState();
 }
 
 class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
-  late int count;
+  late int exampleNumber;
   late Widget example;
   late String code;
   late String explanation;
 
   @override
   void initState() {
-    // TODO: implement initState
+    const example1 = const Example1();
+    exampleNumber = 1;
+    this.code = example1.code;
+    this.explanation = example1.explanation;
     super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant FlutterLayoutArticle oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    final example = widget.examples[exampleNumber -1];
+    this.code = example.code;
+    this.explanation = example.explanation;
   }
 
   @override
@@ -41,6 +50,7 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
               height: 670,
               color: const Color(0xFFCCCCCC),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   _buildExampleSection(),
                   _buildExampleSelectionList(),
@@ -54,6 +64,8 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
     );
   }
 
+
+  // Example Section()
   Widget _buildExampleSection() {
     return Expanded(
       child: ConstrainedBox(
@@ -61,11 +73,12 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
           width: double.infinity,
           height: double.infinity,
         ),
-        child: widget.examples.last,
+        child: widget.examples[exampleNumber - 1],
       ),
     );
   }
 
+  //Example Selection List
   Widget _buildExampleSelectionList() {
     final count = widget.examples.length;
     final List<Widget> selectionButtonList = List.generate(count, (index) {
@@ -81,6 +94,7 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
       width: double.infinity,
       color: Colors.black,
       child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: selectionButtonList,
@@ -92,7 +106,7 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
   Widget _buildSelectionButton(int exampleNumber) {
     return ExampleSelectionButton(
       key: ValueKey('ExampleSelectionButton$exampleNumber'),
-      isSelected: this.count == exampleNumber,
+      isSelected: this.exampleNumber == exampleNumber,
       exampleNumber: exampleNumber,
       onPressed: () {
         final selectedExample = widget.examples[exampleNumber - 1];
@@ -104,19 +118,20 @@ class _FlutterLayoutArticleState extends State<FlutterLayoutArticle> {
 
   void showExample(int exampleNumber, String code, String explanation) {
     setState(() {
-      count = exampleNumber;
+      this.exampleNumber = exampleNumber;
       this.code = code;
       this.explanation = explanation;
     });
   }
 
+  //Explanation Section
   Widget _buildExplanationSection() {
     return Container(
       height: 273,
       color: Colors.grey[50],
       child: Scrollbar(
         child: SingleChildScrollView(
-          key: ValueKey(count),
+          key: ValueKey(exampleNumber),
           child: Padding(
             padding: const EdgeInsets.all(10.0),
             child: Column(
