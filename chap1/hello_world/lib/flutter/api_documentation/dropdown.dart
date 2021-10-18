@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class DropdownDemonstrtion extends StatefulWidget {
-  const DropdownDemonstrtion({Key? key}) : super(key: key);
+class DropdownDemonstration extends StatefulWidget {
+  const DropdownDemonstration({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _DropdownDemonstrtionState();
+  State<StatefulWidget> createState() => _DropdownDemonstrationState();
 }
 
-class _DropdownDemonstrtionState extends State<DropdownDemonstrtion> {
+class _DropdownDemonstrationState extends State<DropdownDemonstration> {
   static const _dropdownItems = <String>[
     'One',
     'Two',
