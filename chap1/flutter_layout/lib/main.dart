@@ -15,6 +15,8 @@ class LayoutExampleHomePage extends StatelessWidget {
     return const FlutterLayoutArticle([
       Example1(),
       Example2(),
+      Example3(),
+      Example4(),
     ]);
   }
 }

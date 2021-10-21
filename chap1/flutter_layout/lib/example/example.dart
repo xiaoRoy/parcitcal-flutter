@@ -54,11 +54,12 @@ class Example3 extends Example {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Container(width: 100, height: 100));
+    return Center(child: Container(width: 100, height: 100, color: red));
   }
 
   @override
-  final String code = 'Center(child: Container(width: 100, height: 100))';
+  final String code = 'Center(\n'
+    '     child: Container(width: 100, height: 100))';
 
   @override
   final String explanation =
@@ -67,6 +68,29 @@ class Example3 extends Example {
       '\n\n'
       'The Center tells the Container that it can be any size it wants, but not bigger than the screen.'
       'Now the Container can indeed be 100x100.';
+}
+
+class Example4 extends Example {
+  const Example4({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.bottomRight,
+        child: Container(width: 100, height: 100, color: red));
+  }
+
+  @override
+  final code = 'Align(\n'
+      '   alignment: Alignment.bottomRight,\n'
+      '   child: Container(width: 100, height: 100, color: red))\n';
+
+  @override
+  final String explanation =
+      'This is different from the Example4 in that it uses Align instead of Center'
+      '\n\n'
+      'Align also tells the Container that it can be any size it wants, but if there is empty space it won\'t center the'
+      'Instead, it aligns the Container to the bottom-right of the available space.';
 }
 
 class ExampleSelectionButton extends StatelessWidget {
