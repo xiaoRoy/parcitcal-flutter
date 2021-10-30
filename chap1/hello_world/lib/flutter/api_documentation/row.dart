@@ -11,10 +11,10 @@ class MainAxisSizeShowcase extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _BlueBoxColummWithBackgound(
+        _BlueBoxColumnWithBackground(
           mainAxisSize: MainAxisSize.max,
         ),
-        _BlueBoxColummWithBackgound(
+        _BlueBoxColumnWithBackground(
           mainAxisSize: MainAxisSize.min,
         )
       ],
@@ -22,10 +22,10 @@ class MainAxisSizeShowcase extends StatelessWidget {
   }
 }
 
-class _BlueBoxColummWithBackgound extends StatelessWidget {
+class _BlueBoxColumnWithBackground extends StatelessWidget {
   final MainAxisSize _mainAxisSize;
 
-  _BlueBoxColummWithBackgound({MainAxisSize mainAxisSize = MainAxisSize.max})
+  _BlueBoxColumnWithBackground({MainAxisSize mainAxisSize = MainAxisSize.max})
       : _mainAxisSize = mainAxisSize;
 
   @override
@@ -34,12 +34,12 @@ class _BlueBoxColummWithBackgound extends StatelessWidget {
       color: Colors.grey,
       child: Column(
         mainAxisSize: _mainAxisSize,
-        children: _generateBlueBoxs(4),
+        children: _generateBlueBoxes(4),
       ),
     );
   }
 
-  List<BlueBox> _generateBlueBoxs(int count) {
+  List<BlueBox> _generateBlueBoxes(int count) {
     List<BlueBox> blueBoxList = [];
     for (var index = 0; index < count; index++) {
       blueBoxList.add(BlueBox(
