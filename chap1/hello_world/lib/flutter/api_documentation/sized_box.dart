@@ -1,11 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:hello_world/commons/layout_builder.dart';
 
 class SizedBoxDocumentation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return _buildColumnToShowChildrenConstraints();
+    return _buildColumnGivenUnboundConstraint();
   }
 
   Widget _budldFlexibleColumn() {
@@ -49,8 +48,8 @@ class SizedBoxDocumentation extends StatelessWidget {
   Widget _buildColumnToShowChildrenConstraints() {
     return Column(
       children: [
-        _buildUsingLayoutBuilder(() {
-          return Text('I get a unbound constraint from parent.');
+        buildUsingLayoutBuilder(() {
+          return Text('I get a unbound constraint from column parent.');
         }),
       ],
     );
@@ -58,7 +57,7 @@ class SizedBoxDocumentation extends StatelessWidget {
 
   //BoxConstraints forces an infinite height.
   Widget _buildColumnWithInfiniteChild() {
-    return _buildUsingLayoutBuilder(() {
+    return buildUsingLayoutBuilder(() {
       return Column(
         children: [
           Container(
@@ -72,7 +71,7 @@ class SizedBoxDocumentation extends StatelessWidget {
   }
 
   Widget _buildColumnToShowSize() {
-    return _buildUsingLayoutBuilder(() {
+    return buildUsingLayoutBuilder(() {
       return Container(
         height: 600,
         width: double.infinity,
@@ -91,15 +90,15 @@ class SizedBoxDocumentation extends StatelessWidget {
     });
   }
 
-  // Widget _buildColumnGivenUnboundConstraint() {
-  //   return
-  // }
-
-  Widget _buildUsingLayoutBuilder(Widget Function() buildWidget) {
-    return LayoutBuilder(
-        builder: (BuildContext buildContext, BoxConstraints boxConstraints) {
-      print('box constraints:${boxConstraints.toString()}');
-      return buildWidget();
-    });
+  Widget _buildColumnGivenUnboundConstraint() {
+    return SizedBox(
+      width: double.infinity,
+      height: double.infinity,
+      child: buildUsingLayoutBuilder(() {
+        return Column(
+          children: [],
+        );
+      })
+    );
   }
 }
