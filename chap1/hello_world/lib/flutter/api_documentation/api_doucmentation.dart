@@ -18,7 +18,8 @@ class ApiDocumentation extends StatelessWidget {
       // body: SizedBoxDemonstration(),
       // body: TextFieldEditingControllerDemonstration(),
       // body: ConstrainedBoxDemonstration(),
-      body: SizedBoxDocumentation(),
+      // body: SizedBoxDocumentation(),
+      body: MiniHeightExample(),
     );
   }
 }
